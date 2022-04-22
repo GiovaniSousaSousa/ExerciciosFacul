@@ -3,7 +3,6 @@
 <html lang="pt-BR">
   <meta charset="UTF-8"/>
   <head>
-    <title>README</title>
   </head>
   <body>
     <H1>Exercício TAGs HTML</h1>
