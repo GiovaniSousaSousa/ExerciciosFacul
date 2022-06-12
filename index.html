@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Avaliar alnuno</title>
+    </head>
+    <body onload="iniciar()">
+	    <H1>Avaliar alunos</H1>
+	    <div>
+            <H2>Bimestre 1</H2>	
+            <div>
+                <div>
+                <p> PROVA 1 : <input id="P1B1" value="0"></p>
+                </div>
+                <div>
+                <p> PROVA 2 : <input id="P2B1" value="0"></p>
+                </div>
+                <div>
+                <p> PROVA 3 : <input id="P3B1" value="0"></p>	
+                </div>
+                <br>
+            </div>
+            <H2>Bimestre 2</H2>	
+            <div>
+                <div>
+                <p> PROVA 1 : <input id="P1B2" value="0"></p>
+                </div>
+                <div>
+                <p> PROVA 2 : <input id="P2B2" value="0"></p>
+                </div>
+                <div>
+                <p> PROVA 3 : <input id="P3B2" value="0"></p>	
+                </div>
+            </div>
+            <br><br>
+            <H2>Frequência</H2>
+            <div>
+                <div>
+                <p>Faltas aluno: <input id="FaltaAluno" value="0"></p>
+                </div>
+                <div>
+                <p>Numero total de aulas: <input id="TotalAulas" value="0"></p>
+                </div>
+            </div>
+            <br><br>		
+            <input type="button" value="Calcular" onclick="Calc()"><br> <br>
+            <div>
+                <div>
+                    <p> Pontuação média aluno : <input id="Media" value="0"></p>
+                </div>
+                <div>
+                    <p> Frequência do aluno : <input id="Freq" value="0"></p>
+                </div>
+                <H3>Situação: <input id="Resultado" value=""></H3><br> <br>
+                <div id=Ocultar>
+                    <p> Exame: <input id="exame" value="0"></p><br> 
+                    <input id="exame1" style="visibility: hidden;"> <br>
+                    <input type="button" value="Calcular" onclick="exames()"><br><br>
+                    <div class=final>
+                        <b> Situação Final: </b> <input id="ResultadoExame" value="">
+                    </div>
+                </div>
+            </div>
+
+	    </div>
+        <script> 
+            function Calc() {
+                Media.value = (((parseInt(P1B1.value) + parseInt(P2B1.value) + parseInt(P3B1.value))
+                     / 3) + ((parseInt(P1B2.value) + parseInt(P2B2.value) + parseInt(P3B2.value)) / 3))/2
+                Freq.value = 100 - ((parseInt(FaltaAluno.value) * 100) / parseInt(TotalAulas.value))
+                if ((Media.value >= 7 ) && (Freq.value >= 75)){
+                Resultado.value = "Aprovado!";
+                document.getElementById('Ocultar').style.visibility = 'hidden';
+                } else if (Freq.value <= 75) {
+                Resultado.value = "Reprovado!";
+                document.getElementById('Ocultar').style.visibility = 'hidden';
+                } else {
+                Resultado.value = "Exame";
+                document.getElementById('Ocultar').style.visibility = 'visible';
+                }              
+                }
+            function exames(){
+                exame1.value = (((parseInt(Media.value) + parseInt(exame.value))/2))
+                if (exame1.value > 5) {
+                ResultadoExame.value = "Aprovado!";
+                } else {
+                ResultadoExame.value = "Reprovado!"
+                }
+                }
+            function iniciar(){
+                document.getElementById('Ocultar').style.visibility = 'hidden';
+                }
+        </script>
+    </body>
+</html>
